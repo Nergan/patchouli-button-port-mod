@@ -8,15 +8,17 @@
 
 ## Загрузки
 
-Jar публикуется в [GitHub Releases](https://github.com/Nergan/patchouli-button-neoforge-port-mod/releases/latest) и на [Modrinth](https://modrinth.com/project/patchouli-button-neoforge-port). Пуш в `main` обновляет релиз текущей версии.
+Jar публикуются в [GitHub Releases](https://github.com/Nergan/patchouli-button-neoforge-port-mod/releases/latest) и на [Modrinth](https://modrinth.com/project/patchouli-button-neoforge-port). Пуш в `main` обновляет файлы текущего релиза.
+
+Скачайте эти файлы и положите в папку `mods`:
 
 | Файл | Нужен | Что это |
 | --- | --- | --- |
 | `patchoulibutton-1.0.0.jar` | Да | этот мод |
-| Kotlin for Forge 5.8+ | Да | [Kotlin for Forge](https://modrinth.com/mod/kotlin-for-forge) |
-| Patchouli 1.21.1-93+ | Да | [Patchouli](https://modrinth.com/mod/patchouli) |
+| `kotlinforforge-5.8.0-all.jar` | Да | [Kotlin for Forge](https://modrinth.com/mod/kotlin-for-forge) |
+| `Patchouli-1.21.1-93-NEOFORGE.jar` | Да | [Patchouli](https://modrinth.com/mod/patchouli) |
 
-`*-sources.jar` ставить не нужно.
+Workflow релиза собирает мод и забирает два чужих jar с Modrinth. SHA-256 у каждого файла GitHub считает сам и показывает рядом с ним на странице релиза. Файл `*-sources.jar` в `mods` класть не нужно.
 
 ## Что делает
 
@@ -57,4 +59,4 @@ Jar публикуется в [GitHub Releases](https://github.com/Nergan/patcho
 
 ## Лицензия
 
-[MIT](LICENSE). Это порт PatchouliButton от Globox_Z, у которого тоже лицензия MIT.
+Код — [MPL-2.0](LICENSE). PatchouliButton от Globox_Z остаётся под MIT.

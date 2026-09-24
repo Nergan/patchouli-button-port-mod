@@ -8,15 +8,17 @@ The inventory button and the config screen are available in English and Russian.
 
 ## Downloads
 
-Jars are published to [GitHub Releases](https://github.com/Nergan/patchouli-button-neoforge-port-mod/releases/latest) and [Modrinth](https://modrinth.com/project/patchouli-button-neoforge-port). A push to `main` updates the current version’s release.
+Jars are published to [GitHub Releases](https://github.com/Nergan/patchouli-button-neoforge-port-mod/releases/latest) and [Modrinth](https://modrinth.com/project/patchouli-button-neoforge-port). A push to `main` updates the files on the current version’s release.
+
+Download these files and put them in the `mods` folder:
 
 | File | Required | What it is |
 | --- | --- | --- |
 | `patchoulibutton-1.0.0.jar` | Yes | this mod |
-| Kotlin for Forge 5.8+ | Yes | [Kotlin for Forge](https://modrinth.com/mod/kotlin-for-forge) |
-| Patchouli 1.21.1-93+ | Yes | [Patchouli](https://modrinth.com/mod/patchouli) |
+| `kotlinforforge-5.8.0-all.jar` | Yes | [Kotlin for Forge](https://modrinth.com/mod/kotlin-for-forge) |
+| `Patchouli-1.21.1-93-NEOFORGE.jar` | Yes | [Patchouli](https://modrinth.com/mod/patchouli) |
 
-Do not install `*-sources.jar`.
+The release workflow builds the mod and fetches the companion jars from Modrinth. GitHub shows a SHA-256 digest next to each file on the release page. Do not install `*-sources.jar`.
 
 ## What it does
 
@@ -57,4 +59,4 @@ On a dedicated server the server file is `world/serverconfig/patchoulibutton-ser
 
 ## License
 
-[MIT](LICENSE). This is a port of PatchouliButton by Globox_Z, which is also MIT.
+The code is [MPL-2.0](LICENSE). PatchouliButton by Globox_Z remains MIT.
