@@ -1,0 +1,16 @@
+{
+  "patchoulibutton.screen.title": "Книги Patchouli",
+  "patchoulibutton.screen.button": "Книги Patchouli",
+  "patchoulibutton.screen.empty": "Книги Patchouli не загружены",
+  "patchoulibutton.screen.prev": "Назад",
+  "patchoulibutton.screen.next": "Дальше",
+  "patchoulibutton.screen.bad_book": "Неизвестный id книги: %s",
+
+  "patchoulibutton.configuration.books": "Книги",
+  "patchoulibutton.configuration.books.clear_starting_books": "Убирать стартовые книги Patchouli",
+  "patchoulibutton.configuration.button": "Кнопка в инвентаре",
+  "patchoulibutton.configuration.button.open_all_books": "Открывать список всех книг",
+  "patchoulibutton.configuration.button.book_id": "Id одной книги",
+  "patchoulibutton.configuration.button.button_x": "Кнопка X",
+  "patchoulibutton.configuration.button.button_y": "Кнопка Y"
+}

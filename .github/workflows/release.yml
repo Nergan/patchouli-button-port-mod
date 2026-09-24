@@ -1,0 +1,111 @@
+name: Release
+
+on:
+  push:
+    branches: ["main"]
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+# Пуш в main пересобирает мод и обновляет GitHub Release для текущей mod_version.
+# Новый номер версии в gradle.properties → новый релиз vX.Y.Z.
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Read versions from gradle.properties
+        id: versions
+        run: |
+          set -euo pipefail
+          mod_version="$(grep -E '^mod_version=' gradle.properties | cut -d= -f2- | tr -d '\r')"
+          echo "mod_version=${mod_version}" >> "$GITHUB_OUTPUT"
+
+      - name: Check tag matches mod_version
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          set -euo pipefail
+          expected="v${{ steps.versions.outputs.mod_version }}"
+          actual="${GITHUB_REF_NAME}"
+          if [[ "${actual}" != "${expected}" ]]; then
+            echo "Tag ${actual} must be ${expected} (mod_version in gradle.properties)."
+            exit 1
+          fi
+
+      - name: Point version tag at this commit
+        if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+        run: |
+          set -euo pipefail
+          tag="v${{ steps.versions.outputs.mod_version }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -f "${tag}" "${GITHUB_SHA}"
+          git push -f origin "refs/tags/${tag}"
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: "21"
+          distribution: "temurin"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.10"
+
+      - name: Build and test
+        run: gradle build --stacktrace
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.versions.outputs.mod_version }}
+          name: Patchouli Button ${{ steps.versions.outputs.mod_version }}
+          target_commitish: ${{ github.sha }}
+          make_latest: true
+          overwrite_files: true
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          files: build/libs/patchoulibutton-${{ steps.versions.outputs.mod_version }}.jar
+          body: |
+            Minecraft **1.21.1** / NeoForge.
+
+            | File | Required |
+            | --- | --- |
+            | `patchoulibutton-${{ steps.versions.outputs.mod_version }}.jar` | Yes |
+            | [Kotlin for Forge](https://modrinth.com/mod/kotlin-for-forge) 5.8+ | Yes |
+            | [Patchouli](https://modrinth.com/mod/patchouli) 1.21.1-93+ | Yes |
+
+            Do not install `*-sources.jar`.
+
+      - name: Publish Modrinth
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: patchouli-button-neoforge-port
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-featured: true
+          name: ${{ steps.versions.outputs.mod_version }}
+          version: ${{ steps.versions.outputs.mod_version }}
+          version-type: release
+          changelog: |
+            Minecraft 1.21.1 / NeoForge. Patchouli Button ${{ steps.versions.outputs.mod_version }}.
+          loaders: |
+            neoforge
+          game-versions: |
+            1.21.1
+          java: |
+            21
+          files: build/libs/patchoulibutton-${{ steps.versions.outputs.mod_version }}.jar
+          dependencies: |
+            kotlin-for-forge(required){modrinth:ordsPcFz}
+            patchouli(required){modrinth:nU0bVIaL}
