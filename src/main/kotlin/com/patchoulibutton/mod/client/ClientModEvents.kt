@@ -14,5 +14,6 @@ object ClientModEvents {
             IConfigScreenFactory { container, parent: Screen -> ConfigurationScreen(container, parent) },
         )
         NeoForge.EVENT_BUS.register(InventoryBookButton)
+        NeoForge.EVENT_BUS.register(CompendiumReturn)
     }
 }

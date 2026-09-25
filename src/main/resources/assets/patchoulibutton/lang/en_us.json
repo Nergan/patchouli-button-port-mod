@@ -4,6 +4,7 @@
   "patchoulibutton.book.landing": "The guides from the mods in this pack are gathered here. Click a book to open it.",
   "patchoulibutton.book.guides": "Guides",
   "patchoulibutton.screen.button": "Guide Book",
+  "patchoulibutton.screen.back": "Back to guide book",
 
   "patchoulibutton.configuration.books": "Books",
   "patchoulibutton.configuration.books.give_compendium": "Give the compendium book on first join",

@@ -8,7 +8,6 @@ import net.minecraft.network.chat.Component
 import net.minecraft.world.item.ItemStack
 import net.neoforged.fml.ModList
 import net.neoforged.neoforge.network.PacketDistributor
-import vazkii.patchouli.api.PatchouliAPI
 import vazkii.patchouli.client.book.BookIcon
 import vazkii.patchouli.client.book.gui.GuiBook
 import vazkii.patchouli.client.book.gui.button.GuiButtonCategory
@@ -45,7 +44,7 @@ object CompendiumIcons {
             .sortedBy { it.id.toString() }
             .forEach { book ->
                 guides += GuideIcon(Component.translatable(book.name), book.icon) {
-                    PatchouliAPI.get().openBookGUI(book.id)
+                    CompendiumReturn.openPatchouli(book.id)
                 }
             }
         if (ModList.get().isLoaded("cnc")) {
@@ -53,6 +52,7 @@ object CompendiumIcons {
             val item = net.minecraft.core.registries.BuiltInRegistries.ITEM.get(ExternalGuides.CNC_FIELD_GUIDE)
             val name = ItemStack(item).hoverName
             guides += GuideIcon(name, icon) {
+                CompendiumReturn.markExternal()
                 PacketDistributor.sendToServer(OpenExternalGuidePayload(ExternalGuides.CNC_FIELD_GUIDE.toString()))
             }
         }

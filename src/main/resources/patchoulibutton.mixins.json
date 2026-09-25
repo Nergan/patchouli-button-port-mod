@@ -6,6 +6,7 @@
   "client": [
     "ContainerScreenAccessor",
     "GuiBookAccessor",
+    "GuiBookMixin",
     "GuiBookLandingMixin"
   ],
   "injectors": {
