@@ -3,6 +3,7 @@
   "landing_text": "patchoulibutton.book.landing",
   "subtitle": "patchoulibutton.book.subtitle",
   "version": "1",
+  "use_resource_pack": true,
   "show_progress": false,
   "i18n": true,
   "model": "patchoulibutton:compendium"
