@@ -19,13 +19,13 @@ abstract class GuiBookLandingMixin {
     @Shadow
     lateinit var book: Book
 
-    @get:Shadow
-    @set:Shadow
-    abstract var spread: Int
+    @field:Shadow
+    @JvmField
+    var spread: Int = 0
 
-    @get:Shadow
-    @set:Shadow
-    abstract var maxSpreads: Int
+    @field:Shadow
+    @JvmField
+    var maxSpreads: Int = 0
 
     @Inject(method = ["init"], at = [At("TAIL")])
     private fun installCompendiumIcons(callback: CallbackInfo) {

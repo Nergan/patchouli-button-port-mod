@@ -1,4 +1,4 @@
-# Patchouli Button
+# Patchouli Button Rework
 
 **[English](README.md)** · **[Русский](README.ru.md)**
 
@@ -41,7 +41,7 @@ The mod is required on both client and server.
 
 ## Configuration
 
-In-game: Mods → Patchouli Button → Config.
+In-game: Mods → Patchouli Button Rework → Config.
 
 | File | What it controls |
 | --- | --- |

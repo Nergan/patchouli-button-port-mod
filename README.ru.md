@@ -1,4 +1,4 @@
-# Patchouli Button
+# Patchouli Button Rework
 
 **[English](README.md)** · **[Русский](README.ru.md)**
 
@@ -41,7 +41,7 @@ Workflow релиза собирает мод и забирает два чуж�
 
 ## Настройки
 
-В игре: Mods → Patchouli Button → Config.
+В игре: Mods → Patchouli Button Rework → Config.
 
 | Файл | Что задаёт |
 | --- | --- |
