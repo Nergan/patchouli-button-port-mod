@@ -1,0 +1,9 @@
+{
+  "name": "patchoulibutton.book.name",
+  "landing_text": "patchoulibutton.book.landing",
+  "subtitle": "patchoulibutton.book.subtitle",
+  "version": "1",
+  "show_progress": false,
+  "i18n": true,
+  "model": "patchoulibutton:compendium"
+}
