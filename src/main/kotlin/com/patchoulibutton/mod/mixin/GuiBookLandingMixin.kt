@@ -19,10 +19,12 @@ abstract class GuiBookLandingMixin {
     @Shadow
     lateinit var book: Book
 
-    @Shadow
+    @get:Shadow
+    @set:Shadow
     abstract var spread: Int
 
-    @Shadow
+    @get:Shadow
+    @set:Shadow
     abstract var maxSpreads: Int
 
     @Inject(method = ["init"], at = [At("TAIL")])
