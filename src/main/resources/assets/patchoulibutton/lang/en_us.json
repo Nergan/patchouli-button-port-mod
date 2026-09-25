@@ -1,16 +1,15 @@
 {
-  "patchoulibutton.screen.title": "Patchouli books",
-  "patchoulibutton.screen.button": "Patchouli books",
-  "patchoulibutton.screen.empty": "No Patchouli books are loaded",
-  "patchoulibutton.screen.prev": "Previous",
-  "patchoulibutton.screen.next": "Next",
-  "patchoulibutton.screen.bad_book": "Unknown book id: %s",
+  "patchoulibutton.book.name": "Guide Book",
+  "patchoulibutton.book.subtitle": "Every mod guide in one volume",
+  "patchoulibutton.book.landing": "The guides from the mods in this pack are gathered here. Click a book to open it.",
+  "patchoulibutton.book.guides": "Guides",
+  "patchoulibutton.screen.button": "Guide Book",
 
   "patchoulibutton.configuration.books": "Books",
-  "patchoulibutton.configuration.books.clear_starting_books": "Clear starter Patchouli books",
+  "patchoulibutton.configuration.books.give_compendium": "Give the compendium book on first join",
+  "patchoulibutton.configuration.books.clear_starting_books": "Clear starter guide books",
   "patchoulibutton.configuration.button": "Inventory button",
-  "patchoulibutton.configuration.button.open_all_books": "Open the list of all books",
-  "patchoulibutton.configuration.button.book_id": "Single book id",
+  "patchoulibutton.configuration.button.show_book_button": "Show the compendium button in the inventory",
   "patchoulibutton.configuration.button.button_x": "Button X",
   "patchoulibutton.configuration.button.button_y": "Button Y"
 }

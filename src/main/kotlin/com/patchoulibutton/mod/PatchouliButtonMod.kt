@@ -2,6 +2,7 @@ package com.patchoulibutton.mod
 
 import com.patchoulibutton.mod.config.ClientConfig
 import com.patchoulibutton.mod.config.ServerConfig
+import com.patchoulibutton.mod.event.CompendiumGift
 import com.patchoulibutton.mod.event.ModSetup
 import com.patchoulibutton.mod.event.StartingBookCleaner
 import net.neoforged.bus.api.IEventBus
@@ -27,5 +28,6 @@ class PatchouliButtonMod(modEventBus: IEventBus, modContainer: ModContainer) {
         modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.SPEC)
         ModSetup.init(modEventBus, modContainer)
         NeoForge.EVENT_BUS.register(StartingBookCleaner)
+        NeoForge.EVENT_BUS.register(CompendiumGift)
     }
 }

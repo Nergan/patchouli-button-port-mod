@@ -16,8 +16,8 @@ authors = "${mod_authors}"
 description = '''
 ${mod_description}
 
-One inventory button for every loaded Patchouli book. Starter guide books can be cleared from the inventory.
-Одна кнопка в инвентаре на все загруженные книги Patchouli. Стартовые книги-гайды можно убирать из инвентаря.
+One book that gathers every other mod's guide. Starter guide books can be cleared from the inventory.
+Одна книга, в которую собраны гайды остальных модов. Стартовые книги-гайды можно убирать из инвентаря.
 '''
 
 [[mixins]]

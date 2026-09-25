@@ -22,9 +22,10 @@ The release workflow builds the mod and fetches the companion jars from Modrinth
 
 ## What it does
 
-- Adds a book button to the survival inventory. It lists every Patchouli book loaded by the current mods and opens the one you pick.
-- The list comes from Patchouli’s book registry, not from the items in your inventory. A book is listed even if nobody gave you the item.
-- With **Clear starter Patchouli books** on (the default), `patchouli:guide_book` items that show up during the first five seconds after you join are removed. Books that were already in the inventory at the moment of joining stay there.
+- Adds one Patchouli book, the Guide Book, that lists every other loaded Patchouli book as a clickable icon inside the book itself. Critters and Crawlers' field guide is included too, even though that mod does not use Patchouli.
+- The book is crafted from four vanilla books in a 2×2 square. With **Give the compendium book on first join** on (the default), each player receives it once.
+- With **Clear starter guide books** on (the default), `patchouli:guide_book` items and the Critters and Crawlers field guide that show up during the first five seconds after joining are removed. The Guide Book itself is kept. Books that were already in the inventory at the moment of joining stay there.
+- The survival-inventory button is off by default. Turn on **Show the compendium button in the inventory** to open the same book from the inventory.
 
 ## Requirements
 
@@ -44,16 +45,16 @@ In-game: Mods → Patchouli Button → Config.
 
 | File | What it controls |
 | --- | --- |
-| `config/patchoulibutton-client.toml` | button position, and whether it opens the full list or one book |
-| `saves/<world>/serverconfig/patchoulibutton-server.toml` | whether starter books are cleared |
+| `config/patchoulibutton-client.toml` | whether the inventory button is shown, and where it sits |
+| `saves/<world>/serverconfig/patchoulibutton-server.toml` | whether the compendium is given on first join, and whether starter books are cleared |
 
 On a dedicated server the server file is `world/serverconfig/patchoulibutton-server.toml`. `clear_starting_books` is a `SERVER` option: the server owns it and syncs it to clients.
 
 | Option | Default | Meaning |
 | --- | --- | --- |
-| `clear_starting_books` | `true` | remove Patchouli guide books gained in the first 5 seconds after joining |
-| `open_all_books` | `true` | open the list; if `false`, open `book_id` |
-| `book_id` | empty | book to open when the list is disabled, such as `modid:book_name` |
+| `give_compendium` | `true` | give the Guide Book the first time a player joins |
+| `clear_starting_books` | `true` | remove guide books gained in the first 5 seconds after joining |
+| `show_book_button` | `false` | show the inventory button that opens the Guide Book |
 | `button_x` | `127` | button position inside the survival inventory |
 | `button_y` | `61` | button position inside the survival inventory |
 

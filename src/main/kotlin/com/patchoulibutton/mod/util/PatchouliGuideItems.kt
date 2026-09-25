@@ -1,26 +1,42 @@
 package com.patchoulibutton.mod.util
 
-import net.minecraft.core.component.DataComponentType
+import com.patchoulibutton.mod.book.CompendiumBook
+import com.patchoulibutton.mod.book.ExternalGuides
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.entity.player.Inventory
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
+import vazkii.patchouli.common.item.PatchouliDataComponents
 
 object PatchouliGuideItems {
     private val guideBookId: ResourceLocation = ResourceLocation.fromNamespaceAndPath("patchouli", "guide_book")
-    private val bookComponentId: ResourceLocation = ResourceLocation.fromNamespaceAndPath("patchouli", "book")
 
     fun isGuideBook(stack: ItemStack): Boolean {
         if (stack.isEmpty) return false
-        return BuiltInRegistries.ITEM.getKey(stack.item) == guideBookId
+        val id = BuiltInRegistries.ITEM.getKey(stack.item)
+        return id == guideBookId || ExternalGuides.isExternalGuide(id)
+    }
+
+    fun hasCompendium(player: Player): Boolean {
+        val inventory: Inventory = player.inventory
+        for (slot in 0 until inventory.containerSize) {
+            if (isCompendium(inventory.getItem(slot))) return true
+        }
+        return isCompendium(player.containerMenu.carried)
     }
 
     fun bookKey(stack: ItemStack): String? {
-        if (!isGuideBook(stack)) return null
-        val id = bookId(stack)
-        return id?.toString() ?: guideBookId.toString()
+        if (stack.isEmpty) return null
+        val itemId = BuiltInRegistries.ITEM.getKey(stack.item)
+        if (ExternalGuides.isExternalGuide(itemId)) return itemId.toString()
+        if (itemId != guideBookId) return null
+        val id = bookId(stack) ?: return guideBookId.toString()
+        if (id == CompendiumBook.ID) return null
+        return id.toString()
     }
+
+    private fun isCompendium(stack: ItemStack): Boolean = bookId(stack) == CompendiumBook.ID
 
     fun counts(player: Player): Map<String, Int> {
         val counts = LinkedHashMap<String, Int>()
@@ -55,10 +71,8 @@ object PatchouliGuideItems {
         if (carriedKey != null) action(carriedKey, carried)
     }
 
-    @Suppress("UNCHECKED_CAST")
     private fun bookId(stack: ItemStack): ResourceLocation? {
-        val type = BuiltInRegistries.DATA_COMPONENT_TYPE.get(bookComponentId) as? DataComponentType<ResourceLocation>
-            ?: return null
-        return stack.get(type)
+        if (stack.isEmpty || BuiltInRegistries.ITEM.getKey(stack.item) != guideBookId) return null
+        return stack.get(PatchouliDataComponents.BOOK)
     }
 }

@@ -7,10 +7,18 @@ import net.neoforged.neoforge.common.ModConfigSpec
  * Экран NeoForge на чужом сервере показывает значения только для чтения.
  */
 class ServerConfig(builder: ModConfigSpec.Builder) {
+    val giveCompendium: ModConfigSpec.BooleanValue
     val clearStartingBooks: ModConfigSpec.BooleanValue
 
     init {
         builder.push("books")
+        giveCompendium = builder
+            .comment(
+                "Give the compendium book the first time a player joins.",
+                "Выдавать общую книгу сборки при первом входе.",
+            )
+            .translation("$PREFIX.books.give_compendium")
+            .define("give_compendium", true)
         clearStartingBooks = builder
             .comment(
                 "Remove Patchouli guide books that appear in a player's inventory during the first 5 seconds after they join.",

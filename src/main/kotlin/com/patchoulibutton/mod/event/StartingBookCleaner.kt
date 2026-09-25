@@ -11,9 +11,9 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent
 import java.util.UUID
 
 /**
- * Снимает книги `patchouli:guide_book`, которые появились в первые
- * [StartingBookSweep.WINDOW_TICKS] тиков после входа. То, что уже лежало
- * в инвентаре, остаётся.
+ * Снимает книги `patchouli:guide_book` и полевой справочник Critters and Crawlers,
+ * которые появились в первые [StartingBookSweep.WINDOW_TICKS] тиков после входа.
+ * Книга сборки и то, что уже лежало в инвентаре, остаются.
  */
 object StartingBookCleaner {
     private val sweeps = HashMap<UUID, Sweep>()

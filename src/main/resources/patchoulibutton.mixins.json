@@ -4,7 +4,8 @@
   "package": "com.patchoulibutton.mod.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "ContainerScreenAccessor"
+    "ContainerScreenAccessor",
+    "GuiBookLandingMixin"
   ],
   "injectors": {
     "defaultRequire": 1
