@@ -20,10 +20,10 @@ abstract class GuiBookLandingMixin {
     lateinit var book: Book
 
     @Shadow
-    var spread: Int
+    abstract var spread: Int
 
     @Shadow
-    var maxSpreads: Int
+    abstract var maxSpreads: Int
 
     @Inject(method = ["init"], at = [At("TAIL")])
     private fun installCompendiumIcons(callback: CallbackInfo) {
