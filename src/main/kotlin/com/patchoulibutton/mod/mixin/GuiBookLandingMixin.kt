@@ -41,14 +41,14 @@ abstract class GuiBookLandingMixin {
         method = ["drawForegroundElements"],
         at = At(
             value = "INVOKE",
-            target = "Lnet/minecraft/client/resources/language/I18n;get(Ljava/lang/String;)Ljava/lang/String;",
+            target = "Lnet/minecraft/client/resources/language/I18n;get(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;",
         ),
     )
-    private fun compendiumHeader(key: String): String {
+    private fun compendiumHeader(key: String, args: Array<Any>?): String {
         val book = (this as GuiBook).book
         if (book.id == CompendiumBook.ID && key == "patchouli.gui.lexicon.categories") {
             return I18n.get("patchoulibutton.book.guides")
         }
-        return I18n.get(key)
+        return I18n.get(key, *(args ?: emptyArray()))
     }
 }
